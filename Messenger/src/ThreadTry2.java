@@ -1,3 +1,6 @@
+import java.net.*;
+import java.io.*;
+
 public class ThreadTry2 implements Runnable{
 	String txt;
 	public ThreadTry2(String txt){
@@ -5,5 +8,6 @@ public class ThreadTry2 implements Runnable{
 	}
 	public void run(){
 		System.out.println(txt);
+		
 	}
 }

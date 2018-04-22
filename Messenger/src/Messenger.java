@@ -18,7 +18,7 @@ public class Messenger {
 				tC.start();
 				tC.join();
 			} catch (Exception e) {
-				
+				System.err.println(e);
 			}
 			
 		}
@@ -31,7 +31,7 @@ public class Messenger {
 				tS.start();	
 				tS.join();
 			} catch(Exception e) {
-				
+				System.err.println(e);
 			}
 			
 		}
