@@ -1,13 +1,13 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Client implements Runnable {
+public class Server implements Runnable {
 	Socket client_socket;
 	int port;
-	
-	public Client(Socket s, int port_number) {
+	public Server(Socket s, int port_number) {
 		this.client_socket = s;
 		this.port = port_number;
 	}
@@ -15,7 +15,7 @@ public class Client implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		try {
+		try	{
 			
 			
 			BufferedReader std_input= new BufferedReader( new InputStreamReader(System.in) );
@@ -24,16 +24,21 @@ public class Client implements Runnable {
 			PrintWriter output= new PrintWriter( client_socket.getOutputStream(), true );
 			String user_msg, reply;
 			while( (user_msg= std_input.readLine()) != null ){
+				
 				output.println( user_msg );
 				reply= input.readLine();
 				System.out.println( reply );
 				System.out.println(user_msg);
 			}
 			client_socket.close();
-		} catch(Exception e){
-			System.out.println( "Error: " + e.getMessage() );
+		}
+		catch ( Exception e ){
+			System.out.println( e.getMessage() );
 		}
 		
 	}
-
+	
+	//public void listen(ServerSocket ss) throws IOException {
+	//	Socket client_socket= ss.accept();
+	//}
 }
